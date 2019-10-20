@@ -1,0 +1,68 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
+}
+
+group = 'net.leonardo_dgs'
+version = '1.0.0'
+description = ''
+
+String mainPackage = project.group + '.' + project.name.toLowerCase()
+String apiVersion = '1.13'
+String author = 'Leonardo_DGS'
+String website = ''
+
+String spigotVersion = '1.14.4-R0.1-SNAPSHOT'
+String lombokVersion = '1.18.10'
+String bStatsVersion = '1.5'
+String helperVersion = '5.5.0'
+
+tasks.compileJava.sourceCompatibility = 1.8
+tasks.compileJava.targetCompatibility = 1.8
+tasks.compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url = 'https://repo.codemc.org/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:' + spigotVersion
+    compileOnly 'org.projectlombok:lombok:' + lombokVersion
+    annotationProcessor 'org.projectlombok:lombok:' + lombokVersion
+    compile 'org.bstats:bstats-bukkit-lite:' + bStatsVersion
+    compile 'me.lucko:helper:' + helperVersion
+}
+
+tasks.processResources {
+    filter ReplaceTokens, tokens: [
+            "name"       : project.name,
+            "mainPackage": mainPackage,
+            "version"    : project.version,
+            "apiVersion" : apiVersion,
+            "description": project.description,
+            "author"     : author,
+            "website"    : website
+    ]
+}
+
+tasks.jar.enabled = false
+
+tasks.shadowJar {
+    archiveFileName = project.name + '.jar'
+    minimize()
+    relocate 'me.lucko.helper', mainPackage
+    relocate 'org.bstats.bukkit', mainPackage + '.bstats'
+}
+
+artifacts {
+    archives shadowJar
+}
+
+configurations.all {
+    transitive = false
+}
