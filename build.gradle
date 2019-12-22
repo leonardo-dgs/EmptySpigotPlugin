@@ -14,10 +14,10 @@ String apiVersion = '1.13'
 String author = 'Leonardo_DGS'
 String website = ''
 
-String spigotVersion = '1.14.4-R0.1-SNAPSHOT'
+String spigotVersion = '1.15.1-R0.1-SNAPSHOT'
 String lombokVersion = '1.18.10'
 String bStatsVersion = '1.5'
-String helperVersion = '5.5.0'
+String helperVersion = '5.6.0'
 
 tasks.compileJava.sourceCompatibility = 1.8
 tasks.compileJava.targetCompatibility = 1.8
@@ -31,11 +31,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:' + spigotVersion
-    compileOnly 'org.projectlombok:lombok:' + lombokVersion
+    shadow 'org.spigotmc:spigot-api:' + spigotVersion
+    shadow 'org.projectlombok:lombok:' + lombokVersion
     annotationProcessor 'org.projectlombok:lombok:' + lombokVersion
-    compile 'org.bstats:bstats-bukkit-lite:' + bStatsVersion
-    compile 'me.lucko:helper:' + helperVersion
+    implementation 'org.bstats:bstats-bukkit-lite:' + bStatsVersion
+    implementation 'me.lucko:helper:' + helperVersion
 }
 
 tasks.processResources {
@@ -55,7 +55,7 @@ tasks.jar.enabled = false
 tasks.shadowJar {
     archiveFileName = project.name + '.jar'
     minimize()
-    relocate 'me.lucko.helper', mainPackage
+    relocate 'me.lucko.helper', mainPackage + ".helper"
     relocate 'org.bstats.bukkit', mainPackage + '.bstats'
 }
 
