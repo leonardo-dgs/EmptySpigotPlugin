@@ -55,7 +55,7 @@ tasks.jar.enabled = false
 tasks.shadowJar {
     archiveFileName = project.name + '.jar'
     minimize()
-    relocate 'me.lucko.helper', mainPackage + ".helper"
+    relocate 'me.lucko.helper', mainPackage + '.helper'
     relocate 'org.bstats.bukkit', mainPackage + '.bstats'
 }
 
