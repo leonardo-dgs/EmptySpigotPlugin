@@ -9,14 +9,12 @@ public final class EmptySpigotPlugin extends JavaPlugin {
     private static EmptySpigotPlugin instance;
 
     @Override
-    public void onEnable()
-    {
+    public void onEnable() {
         instance = this;
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
 
     }
 

@@ -30,8 +30,8 @@ repositories {
 }
 
 dependencies {
-    shadow 'org.spigotmc:spigot-api:' + spigotVersion
-    shadow 'org.projectlombok:lombok:' + lombokVersion
+    compileOnly 'org.spigotmc:spigot-api:' + spigotVersion
+    compileOnly 'org.projectlombok:lombok:' + lombokVersion
     annotationProcessor 'org.projectlombok:lombok:' + lombokVersion
     implementation 'org.bstats:bstats-bukkit-lite:' + bStatsVersion
 }
