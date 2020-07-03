@@ -14,7 +14,7 @@ String apiVersion = '1.13'
 String author = 'Leonardo_DGS'
 String website = ''
 
-String spigotVersion = '1.15.2-R0.1-SNAPSHOT'
+String spigotVersion = '1.16.1-R0.1-SNAPSHOT'
 String lombokVersion = '1.18.12'
 String bStatsVersion = '1.5'
 String helperVersion = '5.6.2'
