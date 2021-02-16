@@ -1,5 +1,5 @@
 name: EmptySpigotPlugin
-main: net.leonardo_dgs.EmptySpigotPlugin
+main: net.leonardo_dgs.emptyspigotplugin.EmptySpigotPlugin
 version: ${version}
 api-version: 1.13
 description: ${description}
